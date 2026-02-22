@@ -4,6 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dibyendu Nayak – Resume</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    function downloadPDF() {
+      const element = document.getElementById('resume-content');
+      const opt = {
+        margin:       [8, 10, 8, 10],
+        filename:     'Dibyendu_Nayak_Resume.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, backgroundColor: '#050510' },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all', 'css'] }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+
+    // Auto-download when opened with ?download=1
+    window.addEventListener('DOMContentLoaded', () => {
+      if (new URLSearchParams(window.location.search).get('download') === '1') {
+        setTimeout(downloadPDF, 600);
+      }
+    });
+  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
@@ -18,12 +40,25 @@
     }
 
     @media print {
-      body { background: #fff; color: #000; padding: 0; }
-      .no-print { display: none; }
-      .card { background: #fff !important; color: #000 !important; border-color: #ddd !important; }
-      h1, h2, h3, .mono { color: #000 !important; }
-      .cyan { color: #0077aa !important; }
-      .purple { color: #6600aa !important; }
+      @page {
+        size: A4;
+        margin: 12mm 14mm;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body {
+        background: #050510 !important;
+        color: #fff !important;
+        padding: 0 !important;
+        font-size: 11pt;
+      }
+      .no-print { display: none !important; }
+      .container { max-width: 100% !important; }
+      .section { break-inside: avoid; }
+      .exp-item { break-inside: avoid; }
+      .project-item { break-inside: avoid; }
     }
 
     .container {
@@ -199,11 +234,11 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="resume-content">
 
     <div class="no-print" style="margin-bottom:2rem;">
       <a href="/" class="back-btn">← Back to Portfolio</a>
-      <button class="print-btn" onclick="window.print()">⤓ Save as PDF</button>
+      <button class="print-btn" onclick="downloadPDF()">⤓ Download PDF</button>
     </div>
 
     <!-- Header -->

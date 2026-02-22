@@ -250,7 +250,7 @@ export default function HeroSection() {
                         </motion.a>
                         {/* Download Resume */}
                         <motion.a
-                            href="/resume.html"
+                            href="/resume.html?download=1"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.05, y: -3 }}
