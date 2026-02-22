@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dibyendu Nayak – Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050510;
+      color: #fff;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      .no-print { display: none; }
+      .card { background: #fff !important; color: #000 !important; border-color: #ddd !important; }
+      h1, h2, h3, .mono { color: #000 !important; }
+      .cyan { color: #0077aa !important; }
+      .purple { color: #6600aa !important; }
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, rgba(0,245,255,0.08), rgba(191,0,255,0.06));
+      border: 1px solid rgba(0,245,255,0.2);
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00f5ff, #bf00ff, #ff006e);
+    }
+
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #00f5ff, #bf00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.25rem;
+    }
+
+    .role {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #00f5ff;
+    }
+    .contacts a { color: #00f5ff; text-decoration: none; }
+    .contacts a:hover { text-decoration: underline; }
+
+    /* Sections */
+    .section {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h2.section-heading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #00f5ff;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    h2.section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(0,245,255,0.4), transparent);
+    }
+
+    /* Experience */
+    .exp-item { margin-bottom: 1.25rem; }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .exp-title { font-size: 1rem; font-weight: 700; color: #fff; }
+    .exp-company { color: #00f5ff; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+    .exp-period { color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; white-space: nowrap; }
+    .exp-desc { color: rgba(255,255,255,0.65); font-size: 0.875rem; line-height: 1.8; }
+    .exp-bullets { list-style: none; padding-left: 0; }
+    .exp-bullets li { color: rgba(255,255,255,0.65); font-size: 0.875rem; line-height: 1.8; padding-left: 1rem; position: relative; }
+    .exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: #00f5ff; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .skill-category h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #bf00ff;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .tag {
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      background: rgba(0,245,255,0.08);
+      border: 1px solid rgba(0,245,255,0.25);
+      color: #00f5ff;
+    }
+    .tag.purple {
+      background: rgba(191,0,255,0.08);
+      border-color: rgba(191,0,255,0.25);
+      color: #bf00ff;
+    }
+    .tag.green {
+      background: rgba(57,255,20,0.08);
+      border-color: rgba(57,255,20,0.25);
+      color: #39ff14;
+    }
+
+    /* Projects */
+    .project-item { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .project-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .project-title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+    .project-tech { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #bf00ff; margin-bottom: 0.5rem; }
+    .project-desc { color: rgba(255,255,255,0.65); font-size: 0.875rem; line-height: 1.8; }
+
+    /* Education */
+    .edu-item { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-degree { font-size: 0.95rem; font-weight: 700; color: #fff; }
+    .edu-inst { color: #bf00ff; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .edu-period { color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+
+    /* Print button */
+    .no-print {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .print-btn {
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      border: 1px solid #00f5ff;
+      background: rgba(0,245,255,0.1);
+      color: #00f5ff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: all 0.3s ease;
+      margin-right: 1rem;
+    }
+    .print-btn:hover { background: rgba(0,245,255,0.2); box-shadow: 0 0 20px rgba(0,245,255,0.3); }
+    .back-btn {
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="no-print" style="margin-bottom:2rem;">
+      <a href="/" class="back-btn">← Back to Portfolio</a>
+      <button class="print-btn" onclick="window.print()">⤓ Save as PDF</button>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Dibyendu Nayak</h1>
+      <p class="role">React Developer · React Native · Frontend Engineer</p>
+      <div class="contacts">
+        <span>📞 +91-7074074395</span>
+        <a href="mailto:dipnayak99@gmail.com">📧 dipnayak99@gmail.com</a>
+        <a href="https://www.linkedin.com/in/dibyendu-nayak-161301189/" target="_blank">💼 LinkedIn</a>
+        <a href="https://github.com/MeczBoyOP" target="_blank">⌨ GitHub</a>
+        <span>📍 India</span>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+      <h2 class="section-heading">Summary</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.85;">
+        Junior React Developer with 2+ years of experience building responsive web and mobile applications
+        using React, React Native, and Tailwind CSS. Experienced in REST API integration, authentication
+        workflows, and component-based architecture. Seeking a frontend role to contribute to scalable
+        user-facing products.
+      </p>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <h2 class="section-heading">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <div class="skill-tags">
+            <span class="tag">React</span>
+            <span class="tag">React Native</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Core JavaScript</h3>
+          <div class="skill-tags">
+            <span class="tag">JavaScript ES6+</span>
+            <span class="tag">Hooks</span>
+            <span class="tag">Context API</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>APIs & Auth</h3>
+          <div class="skill-tags">
+            <span class="tag purple">REST API</span>
+            <span class="tag purple">Axios / Fetch</span>
+            <span class="tag purple">TanStack Query</span>
+            <span class="tag purple">JWT</span>
+            <span class="tag purple">Firebase Auth</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Tools & Deployment</h3>
+          <div class="skill-tags">
+            <span class="tag green">Git / GitHub</span>
+            <span class="tag green">Vite</span>
+            <span class="tag green">Expo</span>
+            <span class="tag green">Vercel</span>
+            <span class="tag green">Netlify</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <h2 class="section-heading">Experience</h2>
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-title">Frontend Developer / Junior Developer</div>
+            <div class="exp-company"><a href="https://sbinfowaves.com/" target="_blank" style="color:inherit;text-decoration:none;">SB Infowaves</a></div>
+          </div>
+          <div class="exp-period">Feb 2025 – Present · India</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed reusable React components and responsive UI using Tailwind CSS</li>
+          <li>Integrated REST APIs and handled authentication flows (JWT)</li>
+          <li>Collaborated with backend developers to deliver features on schedule</li>
+          <li>Improved UI performance by reducing unnecessary re-renders using memoization</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+      <h2 class="section-heading">Projects</h2>
+
+      <div class="project-item">
+        <div class="project-title">DocSafe</div>
+        <div class="project-tech">React · Tailwind CSS · REST API · Drag & Drop · QR Code</div>
+        <ul class="exp-bullets">
+          <li>Built a production-style file management web app with authentication and protected routes</li>
+          <li>Implemented recursive folder-tree UI with drag-and-drop support for moving files/folders</li>
+          <li>Integrated REST APIs for CRUD operations and sharing via QR codes</li>
+          <li>Optimized performance using memoization and component reuse</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-title">Customer Journey</div>
+        <div class="project-tech">React · Role-Based Auth · REST API · Pagination · Memoization</div>
+        <ul class="exp-bullets">
+          <li>Built a production-style internal dashboard with role-based authentication (Admin, Account Manager)</li>
+          <li>Implemented protected routes and permission-based UI for managing projects and user accounts</li>
+          <li>Integrated REST APIs for CRUD operations on projects and account data</li>
+          <li>Developed dashboards with filters, search, and pagination for managing large datasets</li>
+          <li>Implemented loading, error, and empty states for improved UX</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <h2 class="section-heading">Education</h2>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">B.Tech — Mechanical Engineering</div>
+          <div class="edu-inst">BIET</div>
+        </div>
+        <div class="edu-period">2017 – 2021</div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <div class="edu-degree">Full Stack Web Development</div>
+          <div class="edu-inst">PW Skills</div>
+        </div>
+        <div class="edu-period">2023</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
